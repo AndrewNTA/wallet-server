@@ -1,4 +1,5 @@
 const express = require('express');
+const prod = require('./prod');
 const app = express();
 
 app.use(express.json());
@@ -74,6 +75,8 @@ app.post('/api/assets', (req, res) => {
   }
   res.send(assets);
 });
+
+prod(app);
 
 const port = process.env.PORT || 4000;
 app.listen(port, () => console.log(`Listening on port ${port}...`));
